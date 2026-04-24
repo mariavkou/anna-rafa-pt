@@ -7,4 +7,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  base: "/anna-rafa-pt/", // <-- Make sure this matches your exact GitHub repo name!
 })
