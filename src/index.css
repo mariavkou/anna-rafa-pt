@@ -1,6 +1,1 @@
-@import "tailwindcss";
-
-/* Add a smooth scroll behavior for anchor links */
-html {
-  scroll-behavior: smooth;
-}
+/* Site styling is defined in App.css to preserve the supplied reference. */

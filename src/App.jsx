@@ -1,26 +1,44 @@
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
+import "./App.css";
+import reference_1 from "./assets/reference-1.webp";
+import reference_2 from "./assets/reference-2.webp";
+import reference_3 from "./assets/reference-3.jpeg";
+import reference_4 from "./assets/reference-4.jpeg";
 
 export default function App() {
-  return (
-    <Router>
-      {/* We use a flex-col layout to ensure the footer always pushes to the bottom */}
-      <div className="min-h-screen flex flex-col bg-slate-50 font-sans text-slate-900">
-        <Navbar />
-        
-        <main className="flex-grow w-full">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            {/* We will build these next! */}
-            {/* <Route path="/about" element={<About />} /> */}
-            {/* <Route path="/services" element={<Services />} /> */}
-            {/* <Route path="/contact" element={<Contact />} /> */}
-          </Routes>
-        </main>
-
-        {/* <Footer /> */}
-      </div>
-    </Router>
-  );
+  return <>
+    <Navbar />
+<main id="top"><section className="hero"><div className="hero-content"><div className="eyebrow">Strength · Mobility · Balance</div><h1>Move with<br />purpose.</h1><h2>Personal Training<br />Corrective Exercise</h2><em>The Art of Fitness</em><br /><a className="btn" href="#booking">Start Your Journey <span>→</span></a></div></section><section className="values"><div className="value"><b>STRENGTH</b><span>Train with intention</span></div><div className="value"><b>MOBILITY</b><span>Move with freedom</span></div><div className="value"><b>BALANCE</b><span>Feel stronger every day</span></div></section><section className="about" id="about"><div aria-label="Anna Rafailidou training with a dumbbell in the gym" className="portrait" role="img" style={{"backgroundImage": `url(${reference_3})`, "backgroundPosition": "center 42%", "backgroundSize": "cover"}}></div><div className="about-copy"><div className="eyebrow">Meet Anna</div><h2>Movement is<br />a way of life.</h2><div className="line"></div><p className="subtitle">Anna Rafailidou · Personal Trainer & Sport Scientist</p><p>I believe training should be as individual as you are.</p><p>Combining Sports Science, Corrective Exercise, Pilates and Fitness, I create personalized training programs that help you move better, feel stronger and build confidence in your body.</p><p>Whether in person or online, every session is designed around you.</p></div></section><section className="services" id="services"><div className="eyebrow">What I Offer</div><h2>Training designed for you.</h2><p className="intro-line">A thoughtful combination of science, movement and individual attention.</p><div className="cards">
+<article className="card"><span className="num">01 — PERSONAL TRAINING</span><h3>Combined & Personalized</h3><p>Every session is designed around you. I combine Fitness, Strength Training, Pilates, Mobility and Corrective Exercise according to your goals, abilities and progress. The focus can evolve from one session to the next.</p></article>
+<article className="card"><span className="num">02 — STRENGTH & FITNESS</span><h3>Build Strength. Improve Performance.</h3><p>Progressive strength, cardiovascular and functional training to develop endurance, confidence and performance at your own level.</p></article>
+<article className="card"><span className="num">03 — CORRECTIVE EXERCISE</span><h3>Move Better. Feel Stronger.</h3><p>Targeted training to improve mobility, stability, coordination and movement control, with attention to individual muscular imbalances.</p></article>
+<article className="card"><span className="num">04 — PILATES MAT</span><h3>Strength. Control. Balance.</h3><p>Precise, mindful exercises for core stability, flexibility, posture and body awareness.</p></article>
+<article className="card"><span className="num">05 — MOVEMENT ASSESSMENT · IN PERSON</span><h3>Understand Your Body.</h3><p>An individual, in-person assessment to explore movement patterns, mobility limitations and compensations and guide your training.</p></article>
+<article className="card"><span className="num">06 — SEMI-PERSONAL TRAINING</span><h3>Small Groups. Personal Attention.</h3><p>Live small-group sessions with a maximum of six participants, so I can observe your movements, offer corrections and provide individual guidance. Greek-speaking online groups are available.</p></article>
+</div></section><section className="approach" id="approach"><div><div className="eyebrow">My Approach</div><h2>Every Body Is Different.<br />Every Program Should Be Too.</h2></div><div><p>Every body is different. I combine Fitness, Pilates, Corrective Exercise, Strength and Mobility according to your movement, abilities and goals. Your training can change as you progress.</p><p>Using movement assessments and individualized training, I focus on improving movement quality, strength, mobility and balance. Your program evolves with your progress.</p><p>Above all, I believe exercise should be a pleasure, not an obligation. My goal is to help you feel confident, enjoy your training and make movement a natural part of your life.</p><div className="quote">Understand Your Body. Find Your Balance. Enjoy Your Training.</div></div></section><section className="mini-gallery"><div className="eyebrow">Movement in everyday life</div><h2>Find your freedom to move.</h2><img alt="Outdoor movement and fitness on a running track" className="gallery-photo" src={reference_4} /></section><section className="price-section" id="pricing"><div className="price-wrap">
+<div className="eyebrow">Training & Pricing</div><h2>Choose what works for you.</h2>
+<p className="price-intro">Individual coaching, small-group sessions or training at your preferred location. Every program is designed with personal attention.</p>
+<div className="price-grid">
+<article className="price-card"><div className="price-label">01 · Live Online</div><h3>Online Training</h3><div className="price-desc">Train from anywhere with real-time guidance and movement corrections.</div>
+<div className="price-subhead">Individual Personal Training</div>
+<table className="price-table"><tbody><tr><td>5 Sessions</td><td>CHF 450</td></tr><tr><td>10 Sessions</td><td>CHF 850</td></tr><tr><td>20 Sessions</td><td>CHF 1’600</td></tr></tbody></table>
+<div className="price-subhead">Semi-Personal Group Training</div><table className="price-table"><tbody><tr><td>10 Sessions · Up to 6 people</td><td>CHF 300</td></tr></tbody></table>
+<div className="price-subhead">Combination Offer · For Existing Group Members</div><table className="price-table"><tbody><tr><td>10 Individual Personal Training Sessions</td><td><s>CHF 850</s>   CHF 750</td></tr></tbody></table>
+<p className="price-note">Exclusive offer for clients already attending Semi-Personal Group Training: save CHF 100 when purchasing a package of 10 individual online Personal Training sessions. Group sessions are booked separately. Greek-speaking online groups are also available.</p>
+<a className="price-chip" href="#booking">Book Online / Request a Place →</a></article>
+<article className="price-card"><div className="price-label">02 · In Person</div><h3>Home & Outdoor</h3><div className="price-desc">Personalized training at your home or outdoors, alone or together with a partner or friend. 60-minute sessions.</div>
+<div className="price-subhead">Individual Personal Training</div><table className="price-table"><tbody><tr><td>Single Session</td><td>CHF 150</td></tr><tr><td>10 Sessions</td><td>CHF 1’400</td></tr><tr><td>20 Sessions</td><td>CHF 2’700</td></tr></tbody></table>
+<div className="price-subhead">Duo Personal Training · 2 people</div><table className="price-table"><tbody><tr><td>Single Session</td><td>CHF 200</td></tr><tr><td>10 Sessions</td><td>CHF 1’800</td></tr><tr><td>20 Sessions</td><td>CHF 3’400</td></tr></tbody></table>
+<p className="price-note">Duo prices are for both participants together. Starting rates for Thalwil and nearby areas; additional travel fees may apply based on location.</p>
+<div className="price-rule"></div><div className="price-subhead">Private Gym or Studio</div><p className="price-desc" style={{"margin": "0"}}>At an agreed training location. Pricing upon request, depending on location and studio fees.</p>
+<a className="price-chip" href="#booking">Request In-Person Training →</a></article>
+</div><p className="price-note" style={{"marginTop": "20px"}}>Indicative prices for review. Sessions and package terms are confirmed individually.</p>
+</div></section><section className="booking" id="booking"><div className="booking-inner"><span className="demo-banner">Booking design preview · Not connected</span><div className="eyebrow" style={{"marginTop": "22px"}}>Let’s train together</div><h2>Find your way to move.</h2><p>Book individual online sessions or reserve your place in a small-group class once the booking system is connected. In-person training is arranged individually.</p>
+<div className="booking-options">
+<div className="booking-choice"><span className="eyebrow">01 · LIVE ONLINE</span><h3>Book an Online Session</h3><p>Choose an individual session. Available days and times will update automatically when your booking calendar is connected.</p><label htmlFor="service">Choose your training</label><select id="service"><option>Personal Training — Combined & Personalized</option><option>Strength & Fitness</option><option>Corrective Exercise</option><option>Pilates Mat</option></select><div className="calendar-placeholder"><span aria-hidden="true">▦</span><b>Your availability calendar</b><small>Calendar connection pending — no times are displayed or confirmed yet.</small></div><span className="soft-tag">Instant confirmation after activation</span></div>
+<div className="booking-choice"><span className="eyebrow">02 · IN PERSON</span><h3>Request an In-Person Session</h3><p>Personal Training, Strength & Fitness, Corrective Exercise, Pilates Mat and Movement Assessment.</p><p><b>Thalwil · Zürich & surrounding areas</b></p><p>Flexible scheduling by arrangement, depending on location and availability.</p><a className="request-link" href="https://www.instagram.com/anna_rafailidou/" rel="noopener" target="_blank">Send a Session Request ↗</a></div>
+</div>
+<div className="group-booking"><div className="eyebrow">SEMI-PERSONAL · SMALL GROUPS</div><h3>Train together. Get personal attention.</h3><p>Group sessions are limited to <b>six participants</b>, allowing me to observe movement, correct technique and guide each person. You can also train with a friend or create your own private small group — by arrangement.</p><div className="group-grid"><div><h4>Live Online Group Classes</h4><p>Monday <b>12:00 & 18:00</b><br />Wednesday <b>12:00</b><br />Friday <b>12:00 & 17:00</b></p><small>Times shown in Switzerland local time.</small><div className="calendar-placeholder" style={{"marginTop": "16px", "minHeight": "100px", "textAlign": "center"}}><b>Book a Group Class</b><small><strong>Language: Greek</strong></small><small>Reserve your place · Maximum 6 participants · 10 or 20-session packages</small><small>Booking integration pending — no reservations can be made in this preview.</small></div></div><div><h4>Train with a Friend</h4><p>Duo sessions or your own small group, adapted to your goals and abilities.</p><a className="request-link" href="https://www.instagram.com/anna_rafailidou/" rel="noopener" target="_blank">Request a Place / Create Your Group ↗</a></div></div></div>
+<div className="group-booking" style={{"marginTop": "24px"}}><div className="eyebrow">BOOKING POLICY</div><h3>24-Hour Cancellation Policy</h3><p>All individual, duo and semi-personal sessions — online or in person — may be cancelled or rescheduled at least 24 hours in advance. Later cancellations and missed sessions are charged in full or deducted from your package.</p></div></div></section><section className="closing" id="contact"><div><div className="eyebrow">Your next chapter starts here</div><h2>Let's work together.</h2><p>Personalized training · In person & online</p></div><a className="btn" href="#booking">Book Your Session →</a></section></main><footer><strong>ANNA RAFAILIDOU</strong><span>Zurich · Online training</span><span>© 2026 Anna Rafailidou · <a href="https://www.instagram.com/anna_rafailidou/" rel="noopener" target="_blank">Instagram</a></span></footer>
+  </>;
 }
