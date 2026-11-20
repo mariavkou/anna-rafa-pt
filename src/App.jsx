@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { restoreSectionNavigation } from "./sectionNavigation";
 import Navbar from "./components/Navbar";
 import "./App.css";
 import reference_1 from "./assets/reference-1.webp";
@@ -6,6 +8,7 @@ import reference_3 from "./assets/reference-3.jpeg";
 import reference_4 from "./assets/reference-4.jpeg";
 
 export default function App() {
+  useEffect(restoreSectionNavigation, []);
   return <>
     <Navbar />
 <main id="top"><section className="hero"><div className="hero-content"><div className="eyebrow">Strength · Mobility · Balance</div><h1>Move with<br />purpose.</h1><h2>Personal Training<br />Corrective Exercise</h2><em>The Art of Fitness</em><br /><a className="btn" href="./bookings.html">Start Your Journey</a></div></section><section className="values"><div className="value"><b>STRENGTH</b><span>Train with intention</span></div><div className="value"><b>MOBILITY</b><span>Move with freedom</span></div><div className="value"><b>BALANCE</b><span>Feel stronger every day</span></div></section><section className="about" id="about"><div aria-label="Anna Rafailidou training with a dumbbell in the gym" className="portrait" role="img" style={{"backgroundImage": `url(${reference_3})`, "backgroundPosition": "center 42%", "backgroundSize": "cover"}}></div><div className="about-copy"><div className="eyebrow">Meet Anna</div><h2>Movement is<br />a way of life.</h2><div className="line"></div><p className="subtitle">Anna Rafailidou · Personal Trainer & Sport Scientist</p><p>I believe training should be as individual as you are.</p><p>Combining Sports Science, Corrective Exercise, Pilates and Fitness, I create personalized training programs that help you move better, feel stronger and build confidence in your body.</p><p>Whether in person or online, every session is designed around you.</p></div></section><section className="services" id="services"><div className="eyebrow">What I Offer</div><h2>Training designed for you.</h2><p className="intro-line">A thoughtful combination of science, movement and individual attention.</p><div className="cards">

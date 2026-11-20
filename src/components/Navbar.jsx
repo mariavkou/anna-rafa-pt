@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { handleSectionNavigation } from "../sectionNavigation";
 
 export default function Navbar({ homePage = "" }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <header>
+    <header onClick={handleSectionNavigation}>
       <a className="brand" href={`${homePage}#top`} onClick={() => setIsOpen(false)}>
         ANNA RAFAILIDOU<small>PERSONAL TRAINING · CORRECTIVE EXERCISE</small>
       </a>
@@ -15,7 +16,7 @@ export default function Navbar({ homePage = "" }) {
         onClick={() => setIsOpen(false)} onKeyDown={(event) => { if (event.key === "Escape") setIsOpen(false); }}>
         <a href={`${homePage}#top`}>Home</a><a href={`${homePage}#about`}>About</a><a href={`${homePage}#services`}>Services</a>
         <a href={`${homePage}#pricing`}>Pricing</a>
-        <a className="btn" href="https://www.instagram.com/anna_rafailidou/" rel="noopener noreferrer" target="_blank">Get in Touch</a>
+        <a href="https://www.instagram.com/anna_rafailidou/" rel="noopener noreferrer" target="_blank">Get in Touch</a>
       </nav>
     </header>
   );
