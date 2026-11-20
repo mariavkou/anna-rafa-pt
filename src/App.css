@@ -42,3 +42,173 @@ section[id], main[id]{scroll-margin-top:80px}a:focus-visible,button:focus-visibl
 
 /* Match the group and policy panels to the training pricing cards. */
 .price-section .group-booking{background:#fff;border:1px solid #ddd8cc;border-radius:3px}
+
+/* Cleaner, slightly larger navigation labels. */
+header nav {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: .015em;
+}
+header nav .btn {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: .015em;
+}
+
+/* Match the hero action and value captions to the navigation typography. */
+.hero .btn,
+.values .value span,
+.contact-actions .btn {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: .015em;
+}
+
+/* Keep the navigation action consistent with the hero button on hover. */
+header nav .btn:hover {
+  background: #f0e1d0;
+  color: #161513;
+}
+
+/* Improve readability of the small uppercase labels. */
+.brand small {
+  font-size: 11px;
+  letter-spacing: .18em;
+  line-height: 1.5;
+}
+.eyebrow,
+.price-section .eyebrow,
+.price-label,
+.price-chip,
+.about .subtitle {
+  font-size: 13px;
+}
+.value b {
+  font-size: 14px;
+}
+@media (max-width: 540px) {
+  .brand { min-width: 0; }
+  .brand small {
+    font-size: 9px;
+    letter-spacing: .12em;
+    white-space: normal;
+    max-width: 250px;
+  }
+  .menu { flex-shrink: 0; }
+}
+
+/* Shared button treatment for the main calls to action. */
+.btn,
+.price-chip,
+.request-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 13px 22px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: .015em;
+  text-transform: none;
+  text-align: center;
+  transition: background-color .2s, border-color .2s, box-shadow .2s, transform .2s;
+}
+.hero .btn,
+header nav .btn {
+  box-shadow: 0 2px 5px rgb(0 0 0 / 8%);
+}
+.price-chip {
+  background: #f7f6f2;
+  border-color: #deded5;
+  color: #35412f;
+}
+.price-chip:hover {
+  background: #eeefe8;
+  border-color: #b8c0ac;
+}
+.request-link {
+  background: #606d51;
+}
+.request-link:hover {
+  background: #4d5a42;
+}
+.contact-actions .btn {
+  background: #292e25;
+  border-color: #292e25;
+  color: #fff;
+}
+.contact-actions .btn:hover {
+  background: #414b37;
+  border-color: #414b37;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .btn:not(:disabled):hover,
+  .price-chip:hover,
+  .request-link:hover {
+    box-shadow: 0 5px 14px rgb(24 28 21 / 10%);
+  }
+}
+.btn:not(:disabled):active,
+.price-chip:active,
+.request-link:active {
+  box-shadow: none;
+}
+
+/* Give the contact heading and supporting sentence their own full-width lines. */
+.closing {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+.closing .contact-copy,
+.closing .contact-copy p {
+  max-width: none;
+}
+.closing h2 {
+  font-size: clamp(30px, 3.2vw, 46px);
+  line-height: 1.15;
+}
+.closing .contact-actions {
+  justify-content: flex-start;
+}
+
+/* Center the closing contact section and its actions. */
+.closing {
+  align-items: center;
+  text-align: center;
+}
+.closing .contact-actions {
+  justify-content: center;
+}
+
+/* Match footer text to the shared clean typography. */
+footer {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .015em;
+}
+
+/* Use the softer cream by default for the header and hero actions. */
+header nav .btn,
+.hero .btn {
+  background: #f0e1d0;
+  color: #161513;
+}
+header nav .btn:hover,
+.hero .btn:hover {
+  background: #faf3ea;
+  color: #161513;
+}
+
+/* A lighter contact background, still warmer and darker than pricing. */
+.closing {
+  background: #e8dfd3;
+}

@@ -18,11 +18,12 @@
   color: #606d51;
 }
 .bookings-body nav .btn {
-  background: #606d51;
-  color: #fff;
+  background: #f0e1d0;
+  color: #161513;
 }
 .bookings-body nav .btn:hover {
-  background: #4d5a42;
+  background: #faf3ea;
+  color: #161513;
 }
 .booking-page {
   background: #f7f5f0;
@@ -59,4 +60,13 @@
   .booking-page {
     padding: 28px 18px 45px;
   }
+}
+
+.booking-page .booking-calendar .btn {
+  min-height: 44px;
+  border-radius: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color .2s, border-color .2s, box-shadow .2s, transform .2s;
 }
