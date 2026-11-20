@@ -1,4 +1,4 @@
-import { createDemo, bookDemo, cancelDemo, expiryFor } from './model.js';
+import { PRODUCTS, createDemo, bookDemo, cancelDemo, expiryFor, holdsSlot, saveAdminDemo, deleteAdminDemo } from './model.js';
 const env=import.meta.env || {};
 const url=env.VITE_SUPABASE_URL?.replace(/\/$/,''), key=env.VITE_SUPABASE_PUBLISHABLE_KEY;
 export const isLive=Boolean(url && key);
@@ -27,10 +27,13 @@ export async function authenticate(email,password,signup,name) {
 }
 export async function signOut(){try{if(session)await request('/auth/v1/logout','POST');}finally{saveSession(null);}}
 let demo;
-function demoState(){if(!demo){try{demo=JSON.parse(localStorage.getItem(demoKey)||'null');}catch{/* Use fresh preview. */}demo ||= createDemo();}return demo;}
+function demoState(){
+  try{const saved=localStorage.getItem(demoKey);if(saved)demo=JSON.parse(saved);}catch{/* Use the in-memory preview if storage is unavailable. */}
+  demo ||= createDemo();demo.products=structuredClone(PRODUCTS);demo.guest_customers ||= [];return demo;
+}
 function persist(){try{localStorage.setItem(demoKey,JSON.stringify(demo));}catch{/* Usable for this session. */}}
 export async function snapshot(){
-  if(!isLive)return structuredClone(demoState());
+  if(!isLive){const s=structuredClone(demoState());s.slots.forEach(slot=>slot.reserved=s.bookings.filter(b=>b.slot_id===slot.id&&holdsSlot(b.status)).length);s.bookings=s.bookings.filter(b=>b.customer_id==='demo-customer');s.packages=s.packages.filter(p=>p.customer_id==='demo-customer');s.profiles=s.profiles.filter(p=>p.id==='demo-customer');delete s.guest_customers;return s;}
   const [products,slots,packages,bookings,profiles]=await Promise.all([
     request('/rest/v1/products?select=*&order=kind,sessions'),rpc('calendar_slots',{}),
     session?request('/rest/v1/customer_packages?select=*&order=created_at.desc'):[],
@@ -56,19 +59,38 @@ export async function saveSlot(slot){
   if(start<=Date.now())throw new Error('Choose a future date and time.');
   if(s.slots.some(x=>x.id!==slot.id && Date.parse(x.starts_at)<end && Date.parse(x.ends_at)>start))throw new Error('This overlaps another calendar slot.');
   const existing=s.slots.find(x=>x.id===slot.id);
-  if(existing&&s.bookings.some(b=>b.slot_id===existing.id && b.status==='confirmed')&&(existing.starts_at!==slot.starts_at||existing.kind!==slot.kind))throw new Error('Move or cancel existing bookings before changing the time or format.');
+  if(existing&&s.bookings.some(b=>b.slot_id===existing.id && holdsSlot(b.status))&&(existing.starts_at!==slot.starts_at||existing.kind!==slot.kind))throw new Error('Move or cancel existing bookings before changing the time or format.');
   const next={...slot,id:slot.id||crypto.randomUUID(),ends_at:new Date(end).toISOString(),capacity:slot.kind==='group'?6:1};
   if(existing)Object.assign(existing,next);else s.slots.push(next);persist();
 }
 export async function moveBooking(id,target){
   if(isLive)return rpc('move_booking',{p_booking:id,p_target:target});
   const s=demoState(),b=s.bookings.find(x=>x.id===id);
-  if(!b||b.status!=='confirmed')throw new Error('Booking is no longer active.');
-  const backup=structuredClone(s);
-  try{cancelDemo(s,id,true);const moved=bookDemo(s,b.package_id,target,b.customer_id);s.bookings=s.bookings.filter(x=>x.id!==moved.id);b.slot_id=target;b.status='confirmed';persist();}catch(error){demo=backup;throw error;}
+  if(!b||!holdsSlot(b.status))throw new Error('Booking is no longer active.');
+  const backup=structuredClone(s),originalStatus=b.status;
+  try{cancelDemo(s,id,true);const moved=bookDemo(s,b.package_id,target,b.customer_id);s.bookings=s.bookings.filter(x=>x.id!==moved.id);b.slot_id=target;b.status=originalStatus;b.credit_used=moved.credit_used;persist();}catch(error){demo=backup;throw error;}
 }
 export async function reserveDates(packageId,slotIds){
   if(isLive)return rpc('reserve_dates',{p_package:packageId,p_slots:slotIds});
   const s=demoState(),backup=structuredClone(s);
   try{for(const id of slotIds)bookDemo(s,packageId,id);persist();}catch(error){demo=backup;throw error;}
 }
+
+export async function adminSnapshot(){
+  if(!isLive)return structuredClone(demoState());
+  const slots=await rpc('admin_calendar_slots',{}); // Authorize before reading admin data.
+  const [products,packages,bookings,profiles,guest_customers]=await Promise.all([
+    request('/rest/v1/products?select=*&order=kind,sessions'),request('/rest/v1/customer_packages?select=*&order=created_at.desc'),
+    request('/rest/v1/bookings?select=*&order=created_at.desc'),request('/rest/v1/profiles?select=*'),request('/rest/v1/guest_customers?select=*&order=name'),
+  ]);
+  return {products,slots,packages,bookings,profiles,guest_customers};
+}
+export async function adminSaveBooking(values){
+  if(isLive)return rpc('admin_save_booking',{p_booking:values.id||null,p_slot:values.slot_id,p_customer:values.customer_id||null,p_guest:values.guest_customer_id||null,p_name:values.name||'',p_email:values.email||null,p_format:values.format,p_status:values.status,p_package:values.package_id||null});
+  const id=saveAdminDemo(demoState(),values);persist();return id;
+}
+export async function adminConfirmBooking(id){
+  if(isLive)return rpc('admin_confirm_booking',{p_booking:id});
+  const b=demoState().bookings.find(b=>b.id===id);if(b?.status!=='pending')throw new Error('Only a pending booking can be confirmed.');b.status='confirmed';persist();
+}
+export async function adminDeleteBooking(id){if(isLive)return rpc('admin_delete_booking',{p_booking:id});deleteAdminDemo(demoState(),id);persist();}

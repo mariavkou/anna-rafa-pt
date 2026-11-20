@@ -9,7 +9,7 @@ export default defineConfig({
   ],
   build: {
     rollupOptions: {
-      input: { main: "index.html", bookings: "bookings.html" },
+      input: { main: "index.html", bookings: "bookings.html", admin: "admin.html" },
     },
   },
   base: "/anna-rafa-pt/", // <-- Make sure this matches your exact GitHub repo name!
