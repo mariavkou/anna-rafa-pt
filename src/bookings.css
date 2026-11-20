@@ -70,3 +70,12 @@
   font-weight: 500;
   transition: background-color .2s, border-color .2s, box-shadow .2s, transform .2s;
 }
+
+/* Make the group package and weekly class selection easy to follow. */
+.booking-calendar .group-facts{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 28px}
+.booking-calendar .group-facts span{padding:7px 12px;border-radius:20px;background:#eeefe8;color:#4d5a42;font-size:13px}
+.booking-calendar #group .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+.booking-calendar #group .smallcard:has([aria-pressed="true"]){background:#f0f4eb;border-color:#606d51;box-shadow:0 0 0 1px #606d51}
+.booking-calendar .group-week-navigation{margin:20px 0}
+.booking-calendar #groupMessage:not(:empty){margin-top:20px}
+@media(max-width:600px){.booking-calendar #group .cards{grid-template-columns:1fr}.booking-calendar .group-week-navigation strong{order:-1;width:100%}}
