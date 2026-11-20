@@ -7,6 +7,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "test:booking": "node --test tests/booking.test.mjs",
+    "test:booking:database": "node tests/booking-database.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
