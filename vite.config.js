@@ -7,5 +7,10 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  build: {
+    rollupOptions: {
+      input: { main: "index.html", bookings: "bookings.html" },
+    },
+  },
   base: "/anna-rafa-pt/", // <-- Make sure this matches your exact GitHub repo name!
 })

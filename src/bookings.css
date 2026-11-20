@@ -1,0 +1,62 @@
+/* Original booking prototype palette, limited to the standalone page. */
+.bookings-body {
+  background: #f7f5f0;
+  color: #242722;
+}
+.bookings-body > #root > header {
+  background: #f0eee7;
+  border-bottom-color: #dddcd3;
+}
+.bookings-body .brand small,
+.bookings-body .eyebrow {
+  color: #606d51;
+}
+.bookings-body .menu {
+  color: #242722;
+}
+.bookings-body nav a:hover {
+  color: #606d51;
+}
+.bookings-body nav .btn {
+  background: #606d51;
+  color: #fff;
+}
+.bookings-body nav .btn:hover {
+  background: #4d5a42;
+}
+.booking-page {
+  background: #f7f5f0;
+  color: #242722;
+  padding: 40px 6vw 60px;
+}
+.booking-page .booking-inner {
+  max-width: 1100px;
+}
+.booking-page .price-chip {
+  background: #fff;
+  border-color: #dddcd3;
+  color: #4d5a42;
+}
+.booking-page .price-chip:hover {
+  background: #e9ebe3;
+}
+.booking-page .booking-calendar .btn:hover,
+.booking-page .booking-calendar .tab:not(.active):hover {
+  background: #f0eee7;
+}
+.booking-page .booking-calendar .btn.primary:hover {
+  background: #4d5a42;
+}
+.booking-page .booking-calendar .slot:not(:disabled):hover {
+  filter: brightness(.97);
+}
+@media (max-width: 850px) {
+  .bookings-body nav {
+    background: #f0eee7;
+  }
+}
+@media (max-width: 600px) {
+  .booking-page {
+    padding: 28px 18px 45px;
+  }
+}

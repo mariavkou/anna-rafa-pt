@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-export default function Navbar() {
+export default function Navbar({ homePage = "" }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <header>
-      <a className="brand" href="#top" onClick={() => setIsOpen(false)}>
+      <a className="brand" href={`${homePage}#top`} onClick={() => setIsOpen(false)}>
         ANNA RAFAILIDOU<small>PERSONAL TRAINING · CORRECTIVE EXERCISE</small>
       </a>
       <button className="menu" type="button" aria-label={isOpen ? "Close navigation" : "Open navigation"}
@@ -13,9 +13,9 @@ export default function Navbar() {
       </button>
       <nav id="main-navigation" className={isOpen ? "open" : ""} aria-label="Main navigation"
         onClick={() => setIsOpen(false)} onKeyDown={(event) => { if (event.key === "Escape") setIsOpen(false); }}>
-        <a href="#top">Home</a><a href="#about">About</a><a href="#services">Services</a>
-        <a href="#booking">Book a Session</a>
-        <a className="btn" href="https://www.instagram.com/anna_rafailidou/" rel="noopener noreferrer" target="_blank">Get in Touch ↗</a>
+        <a href={`${homePage}#top`}>Home</a><a href={`${homePage}#about`}>About</a><a href={`${homePage}#services`}>Services</a>
+        <a href={`${homePage}#pricing`}>Pricing</a>
+        <a className="btn" href="https://www.instagram.com/anna_rafailidou/" rel="noopener noreferrer" target="_blank">Get in Touch</a>
       </nav>
     </header>
   );

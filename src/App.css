@@ -32,3 +32,13 @@
 /* Navigation and keyboard accessibility */
 section[id], main[id]{scroll-margin-top:80px}a:focus-visible,button:focus-visible,select:focus-visible{outline:2px solid #a58a69;outline-offset:5px}.menu{min-width:44px;min-height:44px} .price-chip:hover{background:#eee7dc}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Contact section */
+.contact-copy{max-width:650px}
+.contact-copy p{max-width:510px;line-height:1.7}
+.contact-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end}
+@media(max-width:850px){.contact-actions{justify-content:flex-start}}
+@media(max-width:540px){.contact-actions{width:100%}.contact-actions .btn{flex:1;padding:15px 18px}}
+
+/* Match the group and policy panels to the training pricing cards. */
+.price-section .group-booking{background:#fff;border:1px solid #ddd8cc;border-radius:3px}

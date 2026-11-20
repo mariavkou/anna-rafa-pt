@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Activity, Dumbbell, HeartPulse, Quote, MapPin, Video, Calendar, AlertCircle } from "lucide-react";
+import { Activity, Dumbbell, HeartPulse, Quote, MapPin, Video, Calendar, AlertCircle } from "lucide-react";
 import heroBg from "../assets/background-hero.jpg"; 
 import heroPs from "../assets/person-hero.jpg";
 
@@ -36,7 +36,7 @@ export default function Home() {
             to="/contact" 
             className="bg-purple-500 hover:bg-purple-600 text-white px-8 py-3.5 rounded-full font-semibold text-base flex items-center justify-center gap-2 transition-all hover:-translate-y-0.5 shadow-lg shadow-purple-500/20"
           >
-            Book Your Session <ArrowRight size={18} />
+            Book Your Session
           </Link>
         </div>
       </section>
