@@ -228,3 +228,21 @@ header nav .btn:hover,
   line-height: 1.75;
   letter-spacing: normal;
 }
+
+/* Keep each training format distinct from the shared booking policy. */
+.group-program{margin-top:24px}
+.group-program .group-grid{margin-top:0}
+.group-program .group-grid p{font:400 14px/1.75 Arial,Helvetica,sans-serif}
+.group-program .group-grid small{color:#74766d}
+
+/* Give the group schedule more separation and keep package text consistent. */
+.group-program .group-grid {
+  grid-template-columns: 1.2fr .8fr;
+  gap: clamp(30px, 6vw, 80px);
+}
+@media (max-width: 700px) {
+  .group-program .group-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+}
